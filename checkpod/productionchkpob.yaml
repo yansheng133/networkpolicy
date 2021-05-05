@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: productionchkpob
+  name: productionchkpob
+  namespace: production
+spec:
+  containers:
+  - args:
+    - /bin/sleep
+    - "3600"
+    image: busybox
+    name: productionchkpob
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

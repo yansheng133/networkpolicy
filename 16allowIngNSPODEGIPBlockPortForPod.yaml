@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ns-prd-np
+  namespace: ns-prd
+spec:
+  podSelector: 
+    matchLabels:
+      app: anotherweb
+  policyTypes:
+  - Egress
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          conn: ok
+    - podSelector:
+        matchLabels:
+          run: anotherpod
+  egress: 
+  - to: 
+    - ipBlock:
+        cidr: 10.6.189.104/24
+    ports:
+    - protocol: TCP
+      port: 80

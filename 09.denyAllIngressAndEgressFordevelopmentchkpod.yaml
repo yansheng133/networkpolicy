@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: ns-prd-np
-  namespace: ns-prd
+  name: denyallingressandegressfordevelopmentchkpod
+  namespace: development
 spec:
   podSelector: 
     matchLabels:
-      run: prdpod
+      run: developmentchkpob
   policyTypes:
   - Ingress
   - Egress
